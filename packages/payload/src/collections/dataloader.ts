@@ -102,7 +102,6 @@ const batchAndLoadDocs =
         showHiddenFields,
       ] = JSON.parse(batchKey)
 
-      req.transactionID = transactionID
 
       const result = await payload.find({
         collection,
@@ -121,6 +120,9 @@ const batchAndLoadDocs =
           },
         },
       })
+
+      req.transactionID = transactionID
+
 
       // For each returned doc, find index in original keys
       // Inject doc within docs array if index exists
